@@ -1,0 +1,15 @@
+GET http://localhost:3000/
+
+###
+
+GET http://localhost:3000/63f4c2a6481c6f5cb088e8d9
+
+###
+
+POST http://localhost:3000/
+Content-Type: application/json
+
+{
+    "name":"Shatha Abu AlRob",
+    "description": "Adolph Larrue Martinez III."
+}
