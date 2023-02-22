@@ -11,7 +11,7 @@ const commentModel = mongoose.Schema({
         type: String,
         required: true
     },
-    mtbi:{
+    mbti:{
         type: String,
         required: true,
     },
