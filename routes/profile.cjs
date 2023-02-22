@@ -23,15 +23,19 @@ const profiles = [
 module.exports = function() {
 
   router.get('/:id',getProfile, async function(req, res, next) {
-    res.render('profile_template', {
-      profile: res.profile,
-    });
+    try{
+      if (res.profile)
+        res.render('profile_template', {
+          profile: res.profile,
+        });
+      }catch(error){
+        res.status(500).json({message: error.message})
+      }
   }); 
 
   router.get('/', async function(req, res, next) {
     try{
       const allProfiles = await Profile.find()
-      
       res.json(allProfiles)
     }catch(error){
       res.status(500).json({message: error.message})
@@ -52,6 +56,7 @@ module.exports = function() {
       res.status(400).json({message: error.message})
     }
   })
+  
 
   // this middleware will be used to retrieve user based on id for GET, PUT, and DELETE requests
   async function getProfile(req,res,next){
